@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Home from "./components/home/Home";
+import SignIn from "./components/signin/SignIn";
+import ProtectedHomeRoute from "./protectedRoutes/protectedHome.route";
+import Authprovider from "./context/Authprovider";
+import SignUp from "./components/signUp/SignUp";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Switch>
+          <Authprovider>
+            <Route exact path="/" component={ SignIn} />
+            <Route exact path="/SignUp" component={SignUp} />
+          
+
+          <ProtectedHomeRoute
+            exact
+            path="/home"
+            component={Home}
+          ></ProtectedHomeRoute>
+          </Authprovider>
+          <Route path="*" component={() => "not found"} />
+        </Switch>
+      </Router>
     </div>
   );
 }

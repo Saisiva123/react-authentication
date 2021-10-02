@@ -1,0 +1,21 @@
+.signUp {
+    width: 30%;
+    padding: 20px 10px;
+    border: 1px solid grey;
+    background: white;
+    border-radius: 10px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    top: 50%;
+    box-shadow: 2px 4px 14px lightgrey;
+    transform: translateY(-50%);
+  }
+  h3 {
+    margin: 0;
+  }
+  .MuiTextField-root {
+    width: 90%;
+    margin: 20px 0px !important;
+  }
+  
