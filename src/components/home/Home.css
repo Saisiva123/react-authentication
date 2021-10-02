@@ -1,0 +1,12 @@
+.empDetails
+{
+    padding-top: 30px;
+    text-align: center;
+}
+.empList
+{
+    width: 90%;
+    margin: 0 auto;
+    border: 1px solid lightgrey;
+    margin-top: 40px;
+}

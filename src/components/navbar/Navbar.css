@@ -1,0 +1,29 @@
+/* .navSection
+{
+    display: flex;
+} */
+.toolbar,.navSection
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navSection 
+{
+ gap: 20px;
+}
+.navSection  a 
+{
+    color: white;
+    text-decoration: none;
+}
+.selected
+{
+    margin: 0;
+    padding: 1px 14px;
+    line-height: 0;
+    height: 34px;
+    border-radius: 10px;
+    background: white;
+    color: rgb(89, 89, 236) !important;
+}

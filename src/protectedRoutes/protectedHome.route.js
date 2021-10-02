@@ -4,13 +4,13 @@ import { Redirect, Route } from "react-router-dom";
 import {AuthContext} from "../context/Authprovider";
 
 const ProtectedHomeRoute = ({ Component, ...restProps }) => {
-  const {user} = useContext(AuthContext)
+ 
   return (
     <Route
       {...restProps}
       render={(props) => {
         <Component {...props} />
-        if (user && localStorage.getItem('usertoken')) {
+        if (localStorage.getItem('userToken')) {
           return <Component {...props} />;
         } else {
           <Redirect
