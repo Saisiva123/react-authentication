@@ -1,27 +1,20 @@
-import React, { useEffect,useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { Redirect, Route } from "react-router-dom";
 // import AuthService from "../services/auth.service";
-import {AuthContext} from "../context/Authprovider";
+import { AuthContext } from "../context/Authprovider";
 
-const ProtectedHomeRoute = ({ Component, ...restProps }) => {
- 
+const ProtectedHomeRoute = ({ component: Component, ...restProps }) => {
+  const data = "dsdf";
   return (
     <Route
       {...restProps}
-      render={(props) => {
-        <Component {...props} />
-        if (localStorage.getItem('userToken')) {
-          return <Component {...props} />;
-        } else {
-          <Redirect
-            exact
-            to={{
-              pathname: "/",
-              state: { from: props.location },
-            }}
-          />;
-        }
-      }}
+      render={(props) =>
+        localStorage.getItem("userToken") ? (
+          <Component {...props} />
+        ) : (
+          <Redirect to={{ pathname: "/" }} />
+        )
+      }
     />
   );
 };

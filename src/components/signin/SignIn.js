@@ -53,7 +53,7 @@ function SignIn() {
             value={password}
             onChange={inputChange}
           />
-          <p onClick={loginWithGoogle}>login with google</p>
+        
 
           <LoadingButton
             color="secondary"
@@ -64,6 +64,9 @@ function SignIn() {
           >
             Send
           </LoadingButton>
+
+          <p className="txtMediaLogin">Or Login With</p>
+          <img src="https://cdn.icon-icons.com/icons2/2108/PNG/512/google_icon_130924.png" onClick={loginWithGoogle}/>
         </div>
       )}
     </>

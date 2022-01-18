@@ -8,7 +8,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-
+import AuthService from "../../services/auth.service";
 function Home() {
   const url = process.env.API_URL
     ? process.env.API_URL
@@ -18,6 +18,7 @@ function Home() {
   const [loading, setLoading] = useState(false);
 
   useEffect(async () => {
+    //   console.log("auth service related",AuthService.currState)
     setLoading(true);
     await fetch(url)
       .then((res) => {
@@ -36,6 +37,7 @@ function Home() {
         setEmployees(empData);
         console.log(employees);
         setLoading(false);
+     AuthService.setState()
       });
 
     // await fetch(url,{
@@ -57,6 +59,7 @@ function Home() {
   return (
     <div className = "empDetails">
       <h3>Employee Details</h3>
+      {loading && <p>loading</p>}
       {!loading && (
        <div className = "empList">
         <TableContainer sx={{ maxHeight: 440 }}>
@@ -91,14 +94,15 @@ function Home() {
             </TableBody>
           </Table>
         </TableContainer>
-           <TablePagination
+           {employees?.length && <TablePagination
            rowsPerPageOptions={[5, 10, 50]}
            component="div"
            count={employees?.length}
            rowsPerPage={5}
            page={0}
-          
-         />
+           onPageChange={()=>{}}
+           onRowsPerPageChange={()=>{}}
+         />}
          </div>
       )}
     </div>

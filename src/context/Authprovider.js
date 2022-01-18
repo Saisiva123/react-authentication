@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { auth, googleAuthProvider } from "../firebase";
+
 export const AuthContext = React.createContext();
 
 function Authprovider({ children }) {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(localStorage.getItem('userToken'));
   const history = useHistory();
 
   function loginWithGoogle() {
@@ -35,7 +36,11 @@ function Authprovider({ children }) {
     return auth.createUserWithEmailAndPassword(username, password);
   }
 
-  function logout() {}
+  function logout() {
+      localStorage.removeItem('userToken');
+      setUser('')
+      history.push("/");
+  }
 
   const value = {
     user,
